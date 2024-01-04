@@ -1,0 +1,27 @@
+<%= form_with model: @offer do |f| %>
+  <div>
+    <%= f.label :client %>
+    <%= f.text_field :client %>
+    <%#, required: true, minlength: 2, placeholder: 'Client' %>
+  </div>
+
+  <div>
+    <%= f.label :body %>
+    <%= f.text_area :body %>
+    <%#, required: true, minlength: 2, placeholder: 'Put text here' %>
+  </div>
+
+  <div>
+    <%= f.label :amount %>
+    <%= f.text_field :amount %>
+  </div>
+
+  <div>
+    <%= f.label :comment %>
+    <%= f.text_area :comment %>
+  </div>
+
+  <div>
+    <%= f.submit 'Submit offer' %>
+  </div>
+<% end %>

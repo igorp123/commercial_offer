@@ -1,0 +1,19 @@
+<h1>List of all offers</h1>
+
+<%= link_to 'New offer', new_offer_path %>
+
+<% @offers.each do |offer| %>
+  <h2><%= "#{offer.client} | #{offer.amount}" %></h2>
+
+  <time datetime="<%= offer.formatted_created_at %>">
+    <%= offer.formatted_created_at %>
+  </time>
+
+  <p><%= offer.body %> </p>
+
+  <div>
+    <%= link_to 'Show', offer_path(offer) %> |
+    <%= link_to 'Edit', edit_offer_path(offer) %> |
+    <%= link_to 'Delete', offer_path(offer), data: {method: :delete, confirm: 'Are you sure?'} %>
+  </div>
+<% end %>
