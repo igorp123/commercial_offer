@@ -1,9 +1,9 @@
 <h1>Offers</h1>
 
-<%= link_to 'New offer', new_offer_path, class: 'mb-3 btn btn-primary' %>
+<%= link_to 'New offer', new_offer_path, class: 'mb-3 btn btn-primary btn-lg' %>
 
 <% @offers.each do |offer| %>
-  <article class = "card">
+  <article class = "card mt-3">
     <div class="card-body">
       <h4><%= "#{offer.client} | #{offer.amount}" %></h4>
 

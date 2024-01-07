@@ -11,6 +11,8 @@ class OffersController < ApplicationController
     @offer = Offer.new(offers_params)
 
     if @offer.save
+      flash[:success] = 'New offer created!'
+
       redirect_to offers_path
     else
       render :new
@@ -25,6 +27,7 @@ class OffersController < ApplicationController
     @offer = Offer.find_by(params[:id])
 
     if @offer.update(offers_params)
+      flash[:success] = 'The offer updated!'
       redirect_to offers_path
     else
       render :edit
@@ -39,6 +42,8 @@ class OffersController < ApplicationController
     @offer = Offer.find_by(params[:id])
 
     @offer.destroy
+
+    flash[:success] = 'The offer deleted!'
 
     redirect_to offers_path
   end
