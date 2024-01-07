@@ -1,4 +1,5 @@
 class OffersController < ApplicationController
+  before_action :set_question, only: %i[edit update show destroy]
   def index
     @offers = Offer.all
   end
@@ -12,7 +13,6 @@ class OffersController < ApplicationController
 
     if @offer.save
       flash[:success] = 'New offer created!'
-
       redirect_to offers_path
     else
       render :new
@@ -20,12 +20,9 @@ class OffersController < ApplicationController
   end
 
   def edit
-    @offer = Offer.find_by(params[:id])
   end
 
   def update
-    @offer = Offer.find_by(params[:id])
-
     if @offer.update(offers_params)
       flash[:success] = 'The offer updated!'
       redirect_to offers_path
@@ -35,21 +32,22 @@ class OffersController < ApplicationController
   end
 
   def show
-    @offer = Offer.find_by(params[:id])
   end
 
   def destroy
-    @offer = Offer.find_by(params[:id])
-
     @offer.destroy
 
     flash[:success] = 'The offer deleted!'
-
     redirect_to offers_path
   end
+
   private
 
   def offers_params
     params.require(:offer).permit(:client, :body, :amount, :comment)
+  end
+
+  def set_question
+    @offer = Offer.find_by(params[:id])
   end
 end
