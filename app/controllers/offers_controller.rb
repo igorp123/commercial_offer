@@ -1,5 +1,6 @@
 class OffersController < ApplicationController
-  before_action :set_question, only: %i[edit update show destroy]
+  before_action :set_question!, only: %i[edit update show destroy]
+
   def index
     @offers = Offer.all
   end
@@ -47,7 +48,7 @@ class OffersController < ApplicationController
     params.require(:offer).permit(:client, :body, :amount, :comment)
   end
 
-  def set_question
+  def set_question!
     @offer = Offer.find_by(params[:id])
   end
 end
