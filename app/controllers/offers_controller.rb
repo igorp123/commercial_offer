@@ -2,7 +2,7 @@ class OffersController < ApplicationController
   before_action :set_question!, only: %i[edit update show destroy]
 
   def index
-    @offers = Offer.all
+    @pagy, @offers = pagy(Offer.order(created_at: :desc))
   end
 
   def new

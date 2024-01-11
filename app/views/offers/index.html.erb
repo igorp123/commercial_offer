@@ -5,8 +5,10 @@
 
 <%= link_to 'New offer', new_offer_path, class: 'mb-3 btn btn-primary btn-lg' %>
 
+<%== pagy_bootstrap_nav(@pagy) if @pagy.pages > 1 %>
+
 <% @offers.each do |offer| %>
-  <article class = "card mt-3">
+  <article class = "card my-3">
     <div class="card-body">
       <h4><%= "#{offer.client} | #{offer.amount}" %></h4>
 
@@ -16,7 +18,7 @@
         </time>
 
         <p class ="my-2">
-          <%= offer.body %>
+          <%= truncate(offer.body, length: 150, omission: '... continued') %>
         </p>
       </section>
 
@@ -27,3 +29,5 @@
     </div>
   </article>
 <% end %>
+
+<%== pagy_bootstrap_nav(@pagy) if @pagy.pages > 1 %>
