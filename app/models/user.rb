@@ -3,7 +3,7 @@ class User < ApplicationRecord
 
   has_secure_password validations: false
 
-  validate :correct_old_password, on: :update
+  validate :correct_old_password, on: :update, if: -> {password.present?}
 
   validate :password_presence
 
