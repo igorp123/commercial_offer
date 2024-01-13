@@ -16,6 +16,10 @@ module Authentication
       session[:user_id] = user.id
     end
 
+    def sign_out
+      session[:user_id] = nil
+    end
+
     helper_method :current_user, :user_signed_in?
   end
 end
