@@ -3,7 +3,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save
-      session[:user_id] = @user.id
+      sing_in @user
 
       flash[:success] = "Welcome to the app, #{current_user.name_or_email}"
 
