@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_action :require_no_authentication
+
   def create
     @user = User.new(user_params)
 

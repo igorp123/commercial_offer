@@ -17,7 +17,23 @@ module Authentication
     end
 
     def sign_out
-      session[:user_id] = nil
+      session.delete :user_id
+    end
+
+    def require_no_authentication
+      return unless user_signed_in?
+
+      flash[:warning] = 'You\'ve already signed in!'
+
+      redirect_to root_path
+    end
+
+    def require_authentication
+      return if user_signed_in?
+
+      flash[:warning] = 'You\'ve not signed in!'
+
+      redirect_to root_path
     end
 
     helper_method :current_user, :user_signed_in?
