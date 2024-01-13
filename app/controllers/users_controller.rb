@@ -28,7 +28,10 @@ class UsersController < ApplicationController
     if @user.update(user_params)
       flash[:success] = 'You profile was successfully updated!'
       redirect_to edit_user_path(@user)
+    else
+      render :edit
     end
+
   end
 end
 
@@ -39,5 +42,5 @@ def set_user!
 end
 
 def user_params
-  params.required(:user).permit(:name, :email, :password, :password_confirmation)
+  params.required(:user).permit(:name, :email, :password, :password_confirmation, :old_password)
 end
