@@ -224,6 +224,9 @@ GEM
     timeout (0.4.1)
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
+    valid_email2 (5.1.1)
+      activemodel (>= 3.2)
+      mail (~> 2.5)
     web-console (4.2.1)
       actionview (>= 6.0.0)
       activemodel (>= 6.0.0)
@@ -257,6 +260,7 @@ DEPENDENCIES
   rails (~> 7.1.2)
   sprockets-rails
   sqlite3 (~> 1.4)
+  valid_email2 (~> 5.1.1)
   web-console
 
 RUBY VERSION
