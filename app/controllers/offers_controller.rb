@@ -3,6 +3,8 @@ class OffersController < ApplicationController
 
   def index
     @pagy, @offers = pagy(Offer.order(created_at: :desc))
+
+    @offers = @offers.decorate
   end
 
   def new
@@ -33,6 +35,7 @@ class OffersController < ApplicationController
   end
 
   def show
+    @offer = @offer.decorate
   end
 
   def destroy

@@ -5,7 +5,7 @@ class UsersController < ApplicationController
     if @user.save
       session[:user_id] = @user.id
 
-      flash[:success] = "Welcome to the app, #{@user.name}"
+      flash[:success] = "Welcome to the app, #{current_user.name_or_email}"
 
       redirect_to root_path
     else
