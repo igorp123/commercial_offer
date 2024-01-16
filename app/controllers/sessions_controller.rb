@@ -17,7 +17,7 @@ class SessionsController < ApplicationController
     else
       flash[:warning] = "Incorect email and / or password!"
 
-      redirect_to new_session_path
+      render :new
     end
   end
 
